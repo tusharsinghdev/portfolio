@@ -42,6 +42,12 @@
             opacity: 0;
         }
 
+        .image {
+            width: 116px;
+            height: 116px;
+            border-radius: 57px;
+        }
+
         .cursor {
             width: 8px;
             height: 8px;
@@ -333,6 +339,7 @@
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
+            overflow: hidden;
         }
 
         .project-card:hover {
@@ -571,9 +578,21 @@
             transition: width 0.3s ease;
         }
 
+        .hero-image-mobile {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: flex;
+            }
+
+            .hero-image-mobile {
+                display: contents;
+            }
+
+            .cta-button {
+                margin-bottom: 30px;
             }
 
             .nav-links {
@@ -601,6 +620,23 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
                 text-align: center;
+            }
+
+            .hero-image {
+                order: 2;
+                width: 100%;
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-content {
+                order: 1;
+                width: 100%;
             }
 
             .hero-content h1 {
@@ -668,14 +704,13 @@
 
     <header>
         <nav>
-            <a href="#" class="logo">Tushar Singh</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="social-links">
-                <a href="https://linkedin.com/in/tusharsingh" target="_blank" class="social-link"
+                <a href="https://www.linkedin.com/in/tushar-singh-1a432a233" target="_blank" class="social-link"
                     title="LinkedIn">💼</a>
                 <a href="https://github.com/tusharsingh3" target="_blank" class="social-link" title="GitHub">💻</a>
                 <a href="mailto:ts360523@gmail.com" class="social-link" title="Email">📧</a>
@@ -694,6 +729,15 @@
                 <div class="hero-content">
                     <h1 class="fade-in">Tushar Singh</h1>
                     <p class="subtitle fade-in">Senior Full Stack Developer | React & Node.js Specialist</p>
+                    <div class="hero-image-mobile">
+                        <div class="profile-card interactive-element fade-in">
+                            <div class="profile-img"><img class="image" src="image.jpeg" alt="Profile Image" /></div>
+                            <p style="margin-top:1rem;font-size:0.95rem;">
+                                <b>Email:</b> <a href="mailto:ts360523@gmail.com">ts360523@gmail.com</a><br>
+                                <b>Phone:</b> <a href="tel:+918920091149">+91 8920091149</a>
+                            </p>
+                        </div>
+                    </div>
                     <p class="description fade-in">
                         Hi! I'm Tushar Singh, a passionate developer with an eye for detail and a drive for excellence.
                         Over the last 5+ years, I've architected and delivered scalable web platforms in B2B, analytics,
@@ -722,9 +766,7 @@
                 </div>
                 <div class="hero-image">
                     <div class="profile-card interactive-element fade-in">
-                        <div class="profile-img">👨‍💻</div>
-                        <h3>Available for hire</h3>
-                        <p class="role">Open to senior developer roles & consulting</p>
+                        <div class="profile-img"><img class="image"  src="image.jpeg" alt="Profile Image" /></div>
                         <p style="margin-top:1rem;font-size:0.95rem;">
                             <b>Email:</b> <a href="mailto:ts360523@gmail.com">ts360523@gmail.com</a><br>
                             <b>Phone:</b> <a href="tel:+918920091149">+91 8920091149</a>
@@ -739,7 +781,7 @@
                 <h2 class="section-title fade-in">Featured Projects</h2>
                 <div class="projects-grid">
                     <!-- VOLZA -->
-                    <div class="project-card interactive-element fade-in">
+                    <div class="project-card interactive-element fade-in" tabindex="0">
                         <div class="project-header">
                             <div>
                                 <h3>Volza</h3>
@@ -775,10 +817,15 @@
                         <div class="project-links">
                             <a href="https://app.volza.com" class="project-link primary" target="_blank">Live Site</a>
                         </div>
+                        <div class="project-overlay">
+                            <strong>Volza</strong>
+                            <div>Tech: React, Node.js, MSSQL, Elastic Search</div>
+                            <a href="https://app.volza.com" style="color: #fff; margin-top: 10px;">View Project</a>
+                        </div>
                     </div>
 
                     <!-- INFODRIVEINDIA -->
-                    <div class="project-card interactive-element fade-in">
+                    <div class="project-card interactive-element fade-in" tabindex="0">
                         <div class="project-header">
                             <div>
                                 <h3>InfodriveIndia</h3>
@@ -815,10 +862,15 @@
                         <div class="project-links">
                             <a href="https://www.volza.com" class="project-link primary" target="_blank">Live Site</a>
                         </div>
+                        <div class="project-overlay">
+                            <strong>InfodriveIndia</strong>
+                            <div>Tech: Next.js, MSSQL, MongoDB, Elastic Search</div>
+                            <a href="https://www.volza.com" style="color: #fff; margin-top: 10px;">View Project</a>
+                        </div>
                     </div>
 
                     <!-- CoolR (Playbook) -->
-                    <div class="project-card interactive-element fade-in">
+                    <div class="project-card interactive-element fade-in" tabindex="0">
                         <div class="project-header">
                             <div>
                                 <h3>CoolR Playbook</h3>
@@ -854,6 +906,12 @@
                         <div class="project-links">
                             <a href="https://playbook.coolrgroup.com" class="project-link primary" target="_blank">Live
                                 Site</a>
+                        </div>
+                        <div class="project-overlay">
+                            <strong>CoolR Playbook</strong>
+                            <div>Tech: React, Node.js, MSSQL, Elastic Search</div>
+                            <a href="https://playbook.coolrgroup.com" style="color: #fff; margin-top: 10px;">View
+                                Project</a>
                         </div>
                     </div>
                 </div>
@@ -970,7 +1028,7 @@
                     <div class="contact-card interactive-element fade-in">
                         <div class="contact-icon">💼</div>
                         <h4>LinkedIn</h4>
-                        <p><a href="https://linkedin.com/in/tusharsingh" target="_blank">Connect with me</a></p>
+                        <p><a href="https://www.linkedin.com/in/tushar-singh-1a432a233" target="_blank">Connect with me</a></p>
                     </div>
                     <div class="contact-card interactive-element fade-in">
                         <div class="contact-icon">💻</div>
@@ -982,38 +1040,6 @@
         </section>
     </main>
     <script>
-        // Custom cursor
-        // const cursor = document.querySelector('.cursor');
-        // const cursorOutline = document.querySelector('.cursor-outline');
-        // if (window.innerWidth > 768) {
-        //     document.addEventListener('mousemove', (e) => {
-        //         cursor.style.left = e.clientX + 'px';
-        //         cursor.style.top = e.clientY + 'px';
-        //         cursor.style.opacity = '1';
-        //         cursorOutline.style.left = e.clientX - 16 + 'px';
-        //         cursorOutline.style.top = e.clientY - 16 + 'px';
-        //         cursorOutline.style.opacity = '1';
-        //     });
-        //     document.addEventListener('mousedown', () => {
-        //         cursor.style.transform = 'scale(0.5)';
-        //         cursorOutline.style.transform = 'scale(0.8)';
-        //     });
-        //     document.addEventListener('mouseup', () => {
-        //         cursor.style.transform = 'scale(1)';
-        //         cursorOutline.style.transform = 'scale(1)';
-        //     });
-        //     const interactiveElements = document.querySelectorAll('a, button, .interactive-element');
-        //     interactiveElements.forEach(el => {
-        //         el.addEventListener('mouseenter', () => {
-        //             cursor.style.transform = 'scale(1.5)';
-        //             cursorOutline.style.transform = 'scale(1.5)';
-        //         });
-        //         el.addEventListener('mouseleave', () => {
-        //             cursor.style.transform = 'scale(1)';
-        //             cursorOutline.style.transform = 'scale(1)';
-        //         });
-        //     });
-        // }
         window.addEventListener('scroll', () => {
             const scrollProgress = document.querySelector('.scroll-progress');
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -1075,18 +1101,6 @@
                 setTimeout(() => { this.style.transform = 'translateY(-4px) scale(1)'; }, 200);
             });
         });
-        const heroTitle = document.querySelector('.hero-content h1');
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        window.addEventListener('load', () => { setTimeout(typeWriter, 1000); });
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const profileCard = document.querySelector('.profile-card');
