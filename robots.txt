@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tusharsinghdev.github.io/portfolio/sitemap.xml
+
+# Security - disallow sensitive paths if they exist
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
