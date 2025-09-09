@@ -1,0 +1,20 @@
+name: Test SCP Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create test file
+        run: echo "Hello from GitHub Actions" > test-action.txt
+
+      - name: Upload test file
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "test-action.txt"
+          target: "/home/tushar/portfolio"
