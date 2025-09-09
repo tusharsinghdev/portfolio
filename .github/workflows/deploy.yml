@@ -22,12 +22,3 @@ jobs:
           source: "./*"
           target: "/home/tushar/portfolio"
           strip_components: 1
-
-      # Optional: reload nginx if you ever change config or want to ensure files are served fresh
-      # - name: Reload nginx
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     username: ${{ secrets.SSH_USER }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     script: sudo systemctl reload nginx
