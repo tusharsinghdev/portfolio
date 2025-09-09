@@ -1,4 +1,4 @@
-name: Deploy Static Site on Push to Master
+name: Deploy Portfolio
 
 on:
   push:
