@@ -1036,10 +1036,187 @@
                         <p><a href="https://github.com/tusharsingh3" target="_blank">View my repositories</a></p>
                     </div>
                 </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form fade-in" id="contactForm" style="max-width: 600px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border);">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--text-primary);">Get In Touch</h3>
+                    <div id="successMessage" style="background: #10b981; color: white; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; display: none;">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Enter Name" maxlength="50" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+                        <div id="nameError" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Email" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+                        <div id="emailError" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+                        <div id="phoneError" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="requirement" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Requirement Description</label>
+                        <textarea id="requirement" name="requirement" placeholder="Describe your requirements..." maxlength="500" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 100px;"></textarea>
+                        <div id="requirementError" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;"></div>
+                        <small style="color: var(--text-secondary); font-size: 0.875rem;">
+                            <span id="charCount">0</span>/500 characters
+                        </small>
+                    </div>
+                    
+                    <button type="submit" style="width: 100%; padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
     <script>
+        // Contact Form Management
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const requirementInput = document.getElementById('requirement');
+        const charCount = document.getElementById('charCount');
+
+        // Character counter for requirement field
+        requirementInput.addEventListener('input', () => {
+            const count = requirementInput.value.length;
+            charCount.textContent = count;
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            clearErrors();
+
+            // Name validation
+            const name = nameInput.value.trim();
+            if (!name) {
+                showError('nameError', 'Name is required');
+                isValid = false;
+            } else if (name.length > 50) {
+                showError('nameError', 'Name must be 50 characters or less');
+                isValid = false;
+            }
+
+            // Email validation
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            
+            if (email && !isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Phone validation
+            if (phone && !isValidPhone(phone)) {
+                showError('phoneError', 'Please enter a valid phone number');
+                isValid = false;
+            }
+
+            // Either email or phone must be provided
+            if (!email && !phone) {
+                showError('emailError', 'Please provide either email or phone number');
+                showError('phoneError', 'Please provide either email or phone number');
+                isValid = false;
+            }
+
+            // Requirement validation
+            const requirement = requirementInput.value.trim();
+            if (requirement && requirement.length > 500) {
+                showError('requirementError', 'Description must be 500 characters or less');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('[id$="Error"]').forEach(error => {
+                error.textContent = '';
+            });
+        }
+
+        // Form submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            try {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                const formData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim() || null,
+                    phone: phoneInput.value.trim() || null,
+                    requirement: requirementInput.value.trim() || null
+                };
+
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    contactForm.reset();
+                    charCount.textContent = '0';
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Display validation errors
+                    if (result.errors) {
+                        Object.keys(result.errors).forEach(field => {
+                            showError(field + 'Error', result.errors[field]);
+                        });
+                    } else {
+                        alert(result.message || 'There was an error sending your message. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error sending your message. Please try again.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
         window.addEventListener('scroll', () => {
             const scrollProgress = document.querySelector('.scroll-progress');
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
