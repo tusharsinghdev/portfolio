@@ -1,7 +1,0 @@
-{"level":"info","message":"🗄️ Connecting to MongoDB...","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"🗄️ Connection string: mongodb://localhost:27017/Portfolio","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"🚀 Portfolio server running on http://localhost:3000","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"🚀 Serving static files from: /home/runner/work/portfolio/portfolio","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"🚀 Environment: development","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"ℹ️ All systems operational - ready to handle requests","timestamp":"2025-09-12 20:01:45"}
-{"level":"info","message":"🗄️ Mongoose disconnected from MongoDB","timestamp":"2025-09-12 20:01:50"}
