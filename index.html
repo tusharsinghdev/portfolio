@@ -7,6 +7,8 @@
     <title>Tushar Singh</title>
     <meta name="description"
         content="Portfolio of Tushar Singh, Senior Full Stack Developer with expertise in React, Node.js, and scalable web solutions">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2563eb;
@@ -18,6 +20,19 @@
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --border: #334155;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -80,6 +95,10 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="dark"] header {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -138,6 +157,29 @@
         }
 
         .social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-2px);
@@ -274,7 +316,7 @@
         }
 
         .profile-card:hover {
-            transform: translateY(-8px) rotate(2deg);
+            transform: translateZ(0) translateY(-8px) rotate(2deg);
             box-shadow: var(--shadow-lg);
         }
 
@@ -308,7 +350,7 @@
         }
 
         #projects {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             background: var(--bg-secondary);
         }
 
@@ -343,7 +385,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateZ(0) translateY(-4px);
             box-shadow: var(--shadow-lg);
             border-color: rgba(37, 99, 235, 0.3);
         }
@@ -520,7 +562,7 @@
         }
 
         #contact {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             background: var(--bg-primary);
         }
 
@@ -576,6 +618,95 @@
             background: var(--primary);
             z-index: 1001;
             transition: width 0.3s ease;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group label.required::after {
+            content: " *";
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-submit:disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-success {
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         .hero-image-mobile {
@@ -711,9 +842,12 @@
             </ul>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/tushar-singh-1a432a233" target="_blank" class="social-link"
-                    title="LinkedIn">💼</a>
-                <a href="https://github.com/tusharsingh3" target="_blank" class="social-link" title="GitHub">💻</a>
-                <a href="mailto:ts360523@gmail.com" class="social-link" title="Email">📧</a>
+                    title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/tusharsingh3" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:ts360523@gmail.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
             </div>
             <div class="mobile-toggle">
                 <span></span>
@@ -1016,44 +1150,239 @@
                 </p>
                 <div class="contact-grid">
                     <div class="contact-card interactive-element fade-in">
-                        <div class="contact-icon">📧</div>
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                         <h4>Email</h4>
                         <p><a href="mailto:ts360523@gmail.com">ts360523@gmail.com</a></p>
                     </div>
                     <div class="contact-card interactive-element fade-in">
-                        <div class="contact-icon">📱</div>
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
                         <h4>Phone</h4>
                         <p><a href="tel:+918920091149">+91 8920091149</a></p>
                     </div>
                     <div class="contact-card interactive-element fade-in">
-                        <div class="contact-icon">💼</div>
+                        <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
                         <h4>LinkedIn</h4>
                         <p><a href="https://www.linkedin.com/in/tushar-singh-1a432a233" target="_blank">Connect with me</a></p>
                     </div>
                     <div class="contact-card interactive-element fade-in">
-                        <div class="contact-icon">💻</div>
+                        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
                         <h4>GitHub</h4>
                         <p><a href="https://github.com/tusharsingh3" target="_blank">View my repositories</a></p>
                     </div>
                 </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form fade-in" id="contactForm">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--text-primary);">Get In Touch</h3>
+                    <div id="successMessage" class="form-success" style="display: none;">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="required">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter Name" maxlength="50" required>
+                        <div class="form-error" id="nameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Email">
+                        <div class="form-error" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number">
+                        <div class="form-error" id="phoneError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requirement">Requirement Description</label>
+                        <textarea id="requirement" name="requirement" placeholder="Describe your requirements..." maxlength="500"></textarea>
+                        <div class="form-error" id="requirementError"></div>
+                        <small style="color: var(--text-secondary); font-size: 0.875rem;">
+                            <span id="charCount">0</span>/500 characters
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
     <script>
+        // Theme Management
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Load saved theme or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fa-solid fa-moon';
+            } else {
+                themeIcon.className = 'fa-solid fa-sun';
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Contact Form Management
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const requirementInput = document.getElementById('requirement');
+        const charCount = document.getElementById('charCount');
+
+        // Character counter for requirement field
+        requirementInput.addEventListener('input', () => {
+            const count = requirementInput.value.length;
+            charCount.textContent = count;
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            clearErrors();
+
+            // Name validation
+            const name = nameInput.value.trim();
+            if (!name) {
+                showError('nameError', 'Name is required');
+                isValid = false;
+            } else if (name.length > 50) {
+                showError('nameError', 'Name must be 50 characters or less');
+                isValid = false;
+            }
+
+            // Email validation
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            
+            if (email && !isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Phone validation
+            if (phone && !isValidPhone(phone)) {
+                showError('phoneError', 'Please enter a valid phone number');
+                isValid = false;
+            }
+
+            // Either email or phone must be provided
+            if (!email && !phone) {
+                showError('emailError', 'Please provide either email or phone number');
+                showError('phoneError', 'Please provide either email or phone number');
+                isValid = false;
+            }
+
+            // Requirement validation
+            const requirement = requirementInput.value.trim();
+            if (requirement && requirement.length > 500) {
+                showError('requirementError', 'Description must be 500 characters or less');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.form-error').forEach(error => {
+                error.textContent = '';
+            });
+        }
+
+        // Form submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            const submitButton = contactForm.querySelector('.form-submit');
+            const originalText = submitButton.textContent;
+            
+            try {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                // For now, just show success message (will be replaced with actual API call)
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'block';
+                    contactForm.reset();
+                    charCount.textContent = '0';
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+
+        // Existing scroll progress functionality
         window.addEventListener('scroll', () => {
             const scrollProgress = document.querySelector('.scroll-progress');
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercentage = (window.scrollY / scrollHeight) * 100;
             scrollProgress.style.width = scrollPercentage + '%';
+            
             const header = document.querySelector('header');
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                if (currentTheme === 'dark') {
+                    header.style.background = 'rgba(15, 23, 42, 0.95)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
                 header.style.borderBottomColor = 'rgba(229, 231, 235, 0.8)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.9)';
+                if (currentTheme === 'dark') {
+                    header.style.background = 'rgba(15, 23, 42, 0.9)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.9)';
+                }
                 header.style.borderBottomColor = 'var(--border)';
             }
         });
+        
+        // Existing mobile menu functionality
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
         mobileToggle.addEventListener('click', () => {
@@ -1069,6 +1398,8 @@
                 spans[2].style.transform = 'none';
             }
         });
+        
+        // Existing smooth scroll functionality
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1085,6 +1416,8 @@
                 }
             });
         });
+        
+        // Existing fade-in animation
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1094,13 +1427,17 @@
             });
         }, observerOptions);
         document.querySelectorAll('.fade-in').forEach(el => { observer.observe(el); });
+        
+        // Existing project card interactions
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', function (e) {
                 if (e.target.tagName === 'A' || e.target.closest('a')) return;
-                this.style.transform = 'translateY(-4px) scale(1.02)';
-                setTimeout(() => { this.style.transform = 'translateY(-4px) scale(1)'; }, 200);
+                this.style.transform = 'translateZ(0) translateY(-4px) scale(1.02)';
+                setTimeout(() => { this.style.transform = 'translateZ(0) translateY(-4px) scale(1)'; }, 200);
             });
         });
+        
+        // Existing parallax effect
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const profileCard = document.querySelector('.profile-card');
@@ -1108,6 +1445,8 @@
                 profileCard.style.transform = `translateY(${scrolled * 0.1}px)`;
             }
         });
+        
+        // Existing skill animation
         const skillItems = document.querySelectorAll('.skill-item');
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1127,6 +1466,8 @@
             skillLevel.style.transition = 'all 0.6s ease';
             skillObserver.observe(item);
         });
+        
+        // Existing project link interactions
         document.querySelectorAll('.project-link').forEach(link => {
             link.addEventListener('click', function (e) {
                 if (this.href === '#') {
@@ -1141,6 +1482,8 @@
                 }
             });
         });
+        
+        // Debounced scroll for performance
         let scrollTimeout;
         const debouncedScroll = () => {
             clearTimeout(scrollTimeout);
